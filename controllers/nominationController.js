@@ -2,68 +2,68 @@ const Nomination = require('../models/nominationModel');
 
 const getNominations = async (req, res) => {
   try {
-    const nominations = await Course.find();
-    res.status(200).json(nominations);
+    const nominations = await Nomination.find();
+    res.status(200).json({ nominations, code: 200 });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message, code: 500 });
   }
 };
 
-const getCourse = async (req, res) => {
+const getNomination = async (req, res) => {
   try {
     const { id } = req.params;
-    const course = await Course.findById(id);
-    res.status(200).json(course);
-  } catch (error) {
-    res.status(500).json({ msg: error.message });
-  }
-};
-
-const addNomination = async (req, res) => {
-  try {
-    const nomination = await Nomination.create(req.body);
+    const nomination = await Nomination.findById(id);
     res.status(200).json(nomination);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
 
-const updateCourse = async (req, res) => {
+const addNomination = async (req, res) => {
+  const { nomineeName, field, category, userEmail } = req.body;
   try {
-    const { id } = req.params;
-    const course = await Course.findById(id);
+    const existingNomination = await Nomination.findOne({
+      nomineeName,
+      field,
+      category,
+      userEmail,
+    });
 
-    if (!course) {
-      return res.status(404).json({ msg: 'No such course found' });
+    if (existingNomination) {
+      return res.status(400).json({
+        msg: 'You have already nominated this person in this field and category.',
+        code: 400,
+      });
     }
-    const updatedCourse = await findByIdAndUpdate(id, req.body);
-    res.status(200).json(updateCourse);
+
+    const nomination = await Nomination.create(req.body);
+    res.status(200).json({ nomination, code: 200 });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message, code: 500 });
   }
 };
 
-const removeCourse = async (req, res) => {
+const removeNomination = async (req, res) => {
   try {
     const { id } = req.params;
-    const course = await Course.findById(id);
+    const nomination = await Nomination.findById(id);
 
-    if (!course) {
+    if (!nomination) {
       return res.status(404).json({ msg: 'No such course found' });
     }
-    const updatedCourse = await findByIdAndDelete(id);
-    res.status(200).json(updateCourse);
-    const courses = await Member.find();
-    res.status(200).json({ msg: 'Member deleted successfully', courses });
+    await findByIdAndDelete(id);
+    const nominations = await Nomination.find();
+    res
+      .status(200)
+      .json({ nominations, msg: 'Member deleted successfully', code: 200 });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    res.status(500).json({ msg: error.message, code: 500 });
   }
 };
 
 module.exports = {
   getNominations,
-  getCourse,
+  getNomination,
   addNomination,
-  updateCourse,
-  removeCourse,
+  removeNomination,
 };

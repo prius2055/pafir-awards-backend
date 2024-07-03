@@ -9,16 +9,16 @@ const nominationSchema = mongoose.Schema(
 
     field: {
       type: String,
-      required: [true, 'Please enter a nominee name'],
+      required: [true, 'Please enter a nomination field'],
     },
 
     category: {
       type: String,
-      required: [true, 'Please enter a nominee name'],
+      required: [true, 'Please enter a nomination category'],
     },
     userEmail: {
       type: String,
-      required: [true, 'Please enter a nominee name'],
+      required: [true, 'Please enter your valid email'],
     },
   },
   {
