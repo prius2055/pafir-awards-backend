@@ -42,7 +42,6 @@ app.use(
 app.use('/api/nominations', nominationRouter);
 app.use('/api/admin', userRouter);
 
-
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
