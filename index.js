@@ -29,7 +29,7 @@ app.use(
     saveUninitialized: false,
     secret: 'session',
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URL,
+      mongoUrl: process.env.MONGODB_URI,
     }),
     cookie: {
       maxAge: 1000 * 60 * 60,
@@ -44,7 +44,7 @@ app.use('/api/admin', userRouter);
 
 
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to database');
     app.listen(port, () => {
