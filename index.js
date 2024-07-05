@@ -19,7 +19,7 @@ app.use(
   })
 );
 
-// app.use(cors());
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,8 +33,8 @@ app.use(
     }),
     cookie: {
       maxAge: 1000 * 60 * 60,
-      sameSite: 'lax',
-      secure: false,
+      sameSite: 'none',
+      secure: true,
     },
   })
 );
