@@ -13,19 +13,19 @@ const time = 1000 * 60 * 60 * 24;
 
 app.use(
   cors({
-    origin: 'https://pafir-awards.vercel.app/',
+    origin: 'https://pafir-awards.vercel.app',
     credentials: true,
     optionsSuccessStatus: 200,
   })
 );
 
-app.use(function (request, response, next) {
-  response.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+// app.use(function (request, response, next) {
+//   response.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   next();
+// });
 
 app.set('trust proxy', 1);
 app.use(express.json());
