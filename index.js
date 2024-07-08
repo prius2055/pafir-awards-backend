@@ -13,13 +13,13 @@ const time = 1000 * 60 * 60 * 24;
 
 app.use(
   cors({
-    origin: 'http://pafirawards.ng',
+    origin: 'https://pafir-awards.vercel.app/',
     credentials: true,
     optionsSuccessStatus: 200,
   })
 );
 
-// app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,8 +33,8 @@ app.use(
     }),
     cookie: {
       maxAge: 1000 * 60 * 60,
-      sameSite: 'lax',
-      secure: false,
+      sameSite: 'none',
+      secure: true,
     },
   })
 );
