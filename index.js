@@ -13,7 +13,7 @@ const time = 1000 * 60 * 60 * 24;
 
 app.use(
   cors({
-    origin: 'https://pafir-awards.onrender.com',
+    origin: 'https://www.pafirawards.ng/',
     credentials: true,
     optionsSuccessStatus: 200,
   })
