@@ -13,8 +13,7 @@ const time = 1000 * 60 * 60 * 24;
 
 app.use(
   cors({
-    // origin: 'https://pafir-awards.vercel.app/',
-    origin: '*',
+    origin: 'https://pafir-awards.vercel.app/',
     credentials: true,
     optionsSuccessStatus: 200,
   })
