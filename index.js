@@ -13,7 +13,7 @@ const time = 1000 * 60 * 60 * 24;
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://pafirawards.ng',
     credentials: true,
     optionsSuccessStatus: 200,
   })
