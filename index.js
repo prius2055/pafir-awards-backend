@@ -11,28 +11,28 @@ const MongoStore = require('connect-mongo');
 const session = require('express-session');
 const time = 1000 * 60 * 60 * 24;
 
-// app.use(cors());
-app.use(
-  cors({
-    origin: 'https://www.pafirawards.ng',
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: 'https://www.pafirawards.ng',
+//     credentials: true,
+//     optionsSuccessStatus: 200,
+//   })
+// );
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://www.pafirawards.ng');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'https://www.pafirawards.ng');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   if (req.method === 'OPTIONS') {
+//     return res.sendStatus(200);
+//   }
+//   next();
+// });
 
 app.set('trust proxy', 1);
 app.use(express.json());
