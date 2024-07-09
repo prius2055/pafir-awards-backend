@@ -11,7 +11,15 @@ const MongoStore = require('connect-mongo');
 const session = require('express-session');
 const time = 1000 * 60 * 60 * 24;
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: 'https://www.pafirawards.ng',
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'https://www.pafirawards.ng');
   res.header(
@@ -25,7 +33,6 @@ app.use(function (req, res, next) {
   }
   next();
 });
-
 
 app.set('trust proxy', 1);
 app.use(express.json());
