@@ -12,19 +12,19 @@ const session = require('express-session');
 const time = 1000 * 60 * 60 * 24;
 
 app.use(cors());
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://pafir-awards.vercel.app');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'https://pafir-awards.vercel.app');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   res.header('Access-Control-Allow-Credentials', 'true');
+//   if (req.method === 'OPTIONS') {
+//     return res.sendStatus(200);
+//   }
+//   next();
+// });
 
 
 app.set('trust proxy', 1);
