@@ -24,7 +24,7 @@ const authenticationMiddleware = (req, res, next) => {
   }
 };
 
-router.get('/', authenticationMiddleware, getNominations);
+router.get('/', getNominations);
 router.get('/:id', authenticationMiddleware, getNomination);
 router.post('/', addNomination);
 router.delete('/:id', authenticationMiddleware, removeNomination);
