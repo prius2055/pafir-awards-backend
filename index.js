@@ -11,7 +11,6 @@ const MongoStore = require('connect-mongo');
 const session = require('express-session');
 const time = 1000 * 60 * 60 * 24;
 
-// app.use(cors());
 app.use(
   cors({
     origin: 'https://www.pafirawards.ng',
