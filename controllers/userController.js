@@ -18,7 +18,7 @@ const signInUser = async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, jwtSecret);
     res.cookie('token', token, { httpOnly: true });
-    // req.session.token = token;
+    req.session.token = token;
     res.status(200).json({ user, code: 200, msg: 'Successfully logged in' });
   } catch (error) {
     res.status(500).json({ code: 500, msg: error.message });
